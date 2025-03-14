@@ -22,9 +22,14 @@ function RobotList() {
       });
   };
 
+  const fixImageUrl = (url) => {
+    if (!url) return '';
+    if (!url.includes('github.com')) return url;
+    return url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+  };
+
   return (
     <div className="container my-5">
-
       <div className="bg-danger-subtle p-3 mb-4 rounded text-center">
         <img
           src="https://www.shutterstock.com/image-vector/set-cute-vintage-robots-banner-260nw-746786869.jpg"
@@ -34,6 +39,7 @@ function RobotList() {
       </div>
 
       <div className="row">
+        {/* Tabla */}
         <div className="col-md-8">
           <table className="table table-bordered table-striped table-hover text-center shadow-sm">
             <thead className="table-dark">
@@ -66,16 +72,26 @@ function RobotList() {
           {selectedRobot && (
             <div className="card shadow">
               <div className="card-body">
-                <h5 className="card-title text-center fw-bold mb-3">{selectedRobot.nombre}</h5>
+                <h5 className="card-title text-center fw-bold mb-3">
+                  {selectedRobot.nombre}
+                </h5>
                 <img
-                  src={selectedRobot.imagen}
+                  src={fixImageUrl(selectedRobot.imagen)}
                   alt={selectedRobot.nombre}
                   className="img-fluid mb-3"
                 />
                 <ul className="list-unstyled small">
-                  <li><strong>→ Año de Fabricación:</strong> {selectedRobot.añoFabricacion}</li>
-                  <li><strong>→ Capacidad de Procesamiento:</strong> {selectedRobot.capacidadProcesamiento}</li>
-                  <li><strong>→ Humor:</strong> {selectedRobot.humor}</li>
+                  <li>
+                    <strong>→ Año de Fabricación:</strong>{" "}
+                    {selectedRobot.añoFabricacion}
+                  </li>
+                  <li>
+                    <strong>→ Capacidad de Procesamiento:</strong>{" "}
+                    {selectedRobot.capacidadProcesamiento}
+                  </li>
+                  <li>
+                    <strong>→ Humor:</strong> {selectedRobot.humor}
+                  </li>
                   <li className="text-muted">{selectedRobot.description}</li>
                 </ul>
               </div>
@@ -83,7 +99,6 @@ function RobotList() {
           )}
         </div>
       </div>
-
     </div>
   );
 }
