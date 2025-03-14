@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import "./RobotList.css";
 
 function RobotDetail() {
@@ -42,10 +43,10 @@ function RobotDetail() {
             <div className="card-body p-4">
               <h1 className="card-title mb-4">{robot.nombre}</h1>
               <div className="robot-info">
-                <p><strong>Modelo:</strong> {robot.modelo}</p>
-                <p><strong>Fabricante:</strong> {robot.empresaFabricante}</p>
-                <p><strong>Año de fabricación:</strong> {robot.añoFabricacion}</p>
-                <p><strong>Capacidad de procesamiento:</strong> {robot.capacidadProcesamiento}</p>
+                <p><strong><FormattedMessage id="table.model" defaultMessage="Modelo" />:</strong> {robot.modelo}</p>
+                <p><strong><FormattedMessage id="table.company" defaultMessage="Fabricante" />:</strong> {robot.empresaFabricante}</p>
+                <p><strong><FormattedMessage id="detail.year" defaultMessage="Año de fabricación" />:</strong> {robot.añoFabricacion}</p>
+                <p><strong><FormattedMessage id="detail.cpu" defaultMessage="Capacidad de procesamiento" />:</strong> {robot.capacidadProcesamiento}</p>
                 <p className="mt-4">{robot.humor}</p>
               </div>
             </div>

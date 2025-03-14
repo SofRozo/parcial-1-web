@@ -1,16 +1,19 @@
 /* src/components/NavBar.css */
 
 .navbar-custom {
-    background-color: white;
-    border-bottom: 2px solid #ccc;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .navbar-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-  }
-  
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  height: 60px;
+}
+
+.navbar-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+.locale-switcher button {
+  font-weight: bold;
+}

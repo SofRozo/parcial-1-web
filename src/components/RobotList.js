@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import "./RobotList.css";
 import robotBanner from "../robot_ini.png";
 
@@ -32,23 +33,18 @@ function RobotList() {
   return (
     <div className="container my-5">
       <div className="bg-danger-subtle p-3 mb-4 rounded text-center">
-        <img
-           src={robotBanner}
-           alt="robots"
-           className="robot-banner"
-        />
+        <img src={robotBanner} alt="robots" className="robot-banner" />
       </div>
 
       <div className="row">
-        {/* Tabla */}
         <div className="col-md-8">
           <table className="table table-bordered table-striped table-hover text-center shadow-sm">
             <thead className="table-dark">
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Modelo</th>
-                <th>Empresa Fabricante</th>
+                <th><FormattedMessage id="table.id" /></th>
+                <th><FormattedMessage id="table.name" /></th>
+                <th><FormattedMessage id="table.model" /></th>
+                <th><FormattedMessage id="table.company" /></th>
               </tr>
             </thead>
             <tbody>
@@ -83,15 +79,13 @@ function RobotList() {
                 />
                 <ul className="list-unstyled small">
                   <li>
-                    <strong>→ Año de Fabricación:</strong>{" "}
-                    {selectedRobot.añoFabricacion}
+                    <strong>→ <FormattedMessage id="detail.year" />:</strong> {selectedRobot.añoFabricacion}
                   </li>
                   <li>
-                    <strong>→ Capacidad de Procesamiento:</strong>{" "}
-                    {selectedRobot.capacidadProcesamiento}
+                    <strong>→ <FormattedMessage id="detail.cpu" />:</strong> {selectedRobot.capacidadProcesamiento}
                   </li>
                   <li>
-                    <strong>→ Humor:</strong> {selectedRobot.humor}
+                    <strong>→ <FormattedMessage id="detail.humor" />:</strong> {selectedRobot.humor}
                   </li>
                   <li className="text-muted">{selectedRobot.description}</li>
                 </ul>

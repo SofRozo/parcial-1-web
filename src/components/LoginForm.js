@@ -1,9 +1,8 @@
-// src/components/LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import robotBanner from "../robot_ini.png";
-
+import { FormattedMessage } from 'react-intl';
 
 function LoginForm({ onLogin, error }) {
   const [username, setUsername] = useState('');
@@ -13,7 +12,6 @@ function LoginForm({ onLogin, error }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loginSuccess = await onLogin(username, password);
-
     if (loginSuccess) {
       navigate('/robots');
     }
@@ -21,20 +19,19 @@ function LoginForm({ onLogin, error }) {
 
   return (
     <div className="login-container">
-
       <div className="banner-container">
-        <img
-          src={robotBanner}
-          alt="robots"
-          className="robot-banner"
-        />
+        <img src={robotBanner} alt="robots" className="robot-banner" />
       </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="form-title">Inicio de sesión</h2>
+        <h2 className="form-title">
+          <FormattedMessage id="login.title" defaultMessage="Inicio de sesión" />
+        </h2>
 
         <div className="form-group">
-          <label>Nombre de usuario</label>
+          <label>
+            <FormattedMessage id="login.username" defaultMessage="Nombre de usuario" />
+          </label>
           <input
             type="text"
             className="form-control"
@@ -45,7 +42,9 @@ function LoginForm({ onLogin, error }) {
         </div>
 
         <div className="form-group">
-          <label>Contraseña</label>
+          <label>
+            <FormattedMessage id="login.password" defaultMessage="Contraseña" />
+          </label>
           <input
             type="password"
             className="form-control"
@@ -56,13 +55,15 @@ function LoginForm({ onLogin, error }) {
         </div>
 
         <div className="button-group">
-          <button type="submit" className="btn btn-primary">Ingresar</button>
+          <button type="submit" className="btn btn-primary">
+            <FormattedMessage id="login.button" defaultMessage="Ingresar" />
+          </button>
           <button
             type="button"
             className="btn btn-danger"
             onClick={() => { setUsername(''); setPassword(''); }}
           >
-            Cancelar
+            <FormattedMessage id="login.cancel" defaultMessage="Cancelar" />
           </button>
         </div>
 
