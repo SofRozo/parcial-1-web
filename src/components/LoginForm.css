@@ -73,10 +73,10 @@ body {
   
   .btn-danger {
     background-color: #E35D5B;
-    color: white;                /* 🔴 Letra blanca */
+    color: white;               
     border: none;
-    width: 140px;                /* 🔧 Ancho mayor */
-    height: 45px;                /* 🔧 Alto mayor */
+    width: 140px;              
+    height: 45px;               
     font-weight: bold;
     font-size: 16px;
   }

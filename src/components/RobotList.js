@@ -32,7 +32,7 @@ function RobotList() {
 
   return (
     <div className="container my-5">
-      <div className="bg-danger-subtle p-3 mb-4 rounded text-center">
+      <div className="p-3 mb-4 rounded text-center">
         <img src={robotBanner} alt="robots" className="robot-banner" />
       </div>
 
