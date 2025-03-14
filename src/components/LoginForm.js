@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
+import robotBanner from "../robot_ini.png";
+
 
 function LoginForm({ onLogin, error }) {
   const [username, setUsername] = useState('');
@@ -22,7 +24,7 @@ function LoginForm({ onLogin, error }) {
 
       <div className="banner-container">
         <img
-          src="https://www.shutterstock.com/image-vector/set-cute-vintage-robots-banner-260nw-746786869.jpg"
+          src={robotBanner}
           alt="robots"
           className="robot-banner"
         />

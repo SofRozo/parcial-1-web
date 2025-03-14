@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./RobotList.css";
+import robotBanner from "../robot_ini.png";
 
 function RobotList() {
   const [robots, setRobots] = useState([]);
@@ -32,9 +33,9 @@ function RobotList() {
     <div className="container my-5">
       <div className="bg-danger-subtle p-3 mb-4 rounded text-center">
         <img
-          src="https://www.shutterstock.com/image-vector/set-cute-vintage-robots-banner-260nw-746786869.jpg"
-          alt="robots"
-          className="img-fluid"
+           src={robotBanner}
+           alt="robots"
+           className="robot-banner"
         />
       </div>
 
@@ -78,7 +79,7 @@ function RobotList() {
                 <img
                   src={fixImageUrl(selectedRobot.imagen)}
                   alt={selectedRobot.nombre}
-                  className="img-fluid mb-3"
+                  className="robot-img mb-3 d-block mx-auto"
                 />
                 <ul className="list-unstyled small">
                   <li>
