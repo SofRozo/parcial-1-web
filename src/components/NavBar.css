@@ -1,5 +1,16 @@
-/* NavBar.css */
-.navbar {
+/* src/components/NavBar.css */
+
+.navbar-custom {
+    background-color: white;
     border-bottom: 2px solid #ccc;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
   }
   

@@ -38,6 +38,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-weight: bold;
+    font-size: 22px;
   }
   
   .form-group {
@@ -45,7 +46,7 @@ body {
   }
   
   .form-control {
-    height: 40px;
+    height: 45px;
     font-size: 16px;
     background-color: #eaeaea;
     border: none;
@@ -62,21 +63,28 @@ body {
   
   .btn-primary {
     background-color: #004AAD;
+    color: white;               
     border: none;
-    width: 120px;
+    width: 140px;              
+    height: 45px;               
     font-weight: bold;
+    font-size: 16px;
   }
   
   .btn-danger {
     background-color: #E35D5B;
+    color: white;                /* 🔴 Letra blanca */
     border: none;
-    width: 120px;
+    width: 140px;                /* 🔧 Ancho mayor */
+    height: 45px;                /* 🔧 Alto mayor */
     font-weight: bold;
+    font-size: 16px;
   }
   
   .error-message {
     color: red;
     margin-top: 10px;
     text-align: center;
+    font-size: 14px;
   }
   

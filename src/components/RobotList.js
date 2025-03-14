@@ -5,7 +5,6 @@ function RobotList() {
   const [robots, setRobots] = useState([]);
   const [selectedRobot, setSelectedRobot] = useState(null);
 
-  // 🔁 Cargar listado de robots desde el backend
   useEffect(() => {
     fetch("http://localhost:3001/robots")
       .then((response) => response.json())
@@ -13,7 +12,6 @@ function RobotList() {
       .catch((error) => console.error("Error al cargar robots:", error));
   }, []);
 
-  // 🧠 Función para cargar detalle desde /robots/:id
   const handleRobotClick = (robotId) => {
     fetch(`http://localhost:3001/robots/${robotId}`)
       .then((res) => res.json())
@@ -25,22 +23,20 @@ function RobotList() {
   };
 
   return (
-    <div className="container robot-panel">
-      <h1 className="text-center title">Adopta un Robot con Robot Lovers!</h1>
+    <div className="container my-5">
 
-      <div className="banner-container">
+      <div className="bg-danger-subtle p-3 mb-4 rounded text-center">
         <img
           src="https://www.shutterstock.com/image-vector/set-cute-vintage-robots-banner-260nw-746786869.jpg"
           alt="robots"
-          className="robot-banner"
+          className="img-fluid"
         />
       </div>
 
-      <div className="row mt-4">
-        {/* Tabla */}
+      <div className="row">
         <div className="col-md-8">
-          <table className="table table-bordered table-striped table-hover text-center">
-            <thead className="thead-dark">
+          <table className="table table-bordered table-striped table-hover text-center shadow-sm">
+            <thead className="table-dark">
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -65,30 +61,29 @@ function RobotList() {
           </table>
         </div>
 
-        {/* Detalle */}
+        {/* Detalle a la derecha */}
         <div className="col-md-4">
           {selectedRobot && (
-            <div className="robot-detail-card">
-              <h4 className="text-center">{selectedRobot.nombre}</h4>
-              <img
-                src={selectedRobot.imagen}
-                alt={selectedRobot.nombre}
-                className="img-fluid robot-img"
-              />
-              <ul className="robot-info">
-                <li><strong>→ Año de Fabricación:</strong> {selectedRobot.añoFabricacion}</li>
-                <li><strong>→ Capacidad de Procesamiento:</strong> {selectedRobot.capacidadProcesamiento}</li>
-                <li><strong>→ Humor:</strong> {selectedRobot.humor}</li>
-                <li>{selectedRobot.description}</li>
-              </ul>
+            <div className="card shadow">
+              <div className="card-body">
+                <h5 className="card-title text-center fw-bold mb-3">{selectedRobot.nombre}</h5>
+                <img
+                  src={selectedRobot.imagen}
+                  alt={selectedRobot.nombre}
+                  className="img-fluid mb-3"
+                />
+                <ul className="list-unstyled small">
+                  <li><strong>→ Año de Fabricación:</strong> {selectedRobot.añoFabricacion}</li>
+                  <li><strong>→ Capacidad de Procesamiento:</strong> {selectedRobot.capacidadProcesamiento}</li>
+                  <li><strong>→ Humor:</strong> {selectedRobot.humor}</li>
+                  <li className="text-muted">{selectedRobot.description}</li>
+                </ul>
+              </div>
             </div>
           )}
         </div>
       </div>
 
-      <footer className="footer text-center mt-4">
-        <p>Contact us: +57 3102105253 - info@robot-lovers.com - @robot-lovers</p>
-      </footer>
     </div>
   );
 }

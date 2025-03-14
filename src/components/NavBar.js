@@ -4,9 +4,9 @@ import './NavBar.css';
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-dark bg-dark px-3">
-      <Link className="navbar-brand" to="/">
-        Robot Lovers
+    <nav className="navbar-custom">
+      <Link className="navbar-title" to="/">
+        Adopta un Robot con Robot Lovers!
       </Link>
     </nav>
   );

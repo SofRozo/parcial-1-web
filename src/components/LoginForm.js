@@ -19,7 +19,6 @@ function LoginForm({ onLogin, error }) {
 
   return (
     <div className="login-container">
-      <h1 className="title">Adopta un Robot con Robot Lovers!</h1>
 
       <div className="banner-container">
         <img

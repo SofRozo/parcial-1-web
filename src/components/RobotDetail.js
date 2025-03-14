@@ -1,65 +1,57 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import './RobotDetail.css';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./RobotList.css";
 
 function RobotDetail() {
-  const { robotId } = useParams();
+  const { id } = useParams();
   const [robot, setRobot] = useState(null);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/robots.json`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error al obtener los detalles del robot");
-        }
-        return response.json();
-      })
+    fetch(`http://localhost:3001/robots/${id}`)
+      .then((res) => res.json())
       .then((data) => {
-        const foundRobot = data.find((r) => r.id === parseInt(robotId));
-        setRobot(foundRobot);
+        setRobot(data);
+        setLoading(false);
       })
-      .catch((error) => setError(error.message));
-  }, [robotId]);
+      .catch((err) => {
+        console.error("Error:", err);
+        setLoading(false);
+      });
+  }, [id]);
 
-  if (error) return <div className="text-danger text-center mt-4">Error: {error}</div>;
-  if (!robot) return <div className="text-center mt-4">Cargando detalles del robot...</div>;
+  if (loading) return <div className="text-center my-5">Cargando detalles...</div>;
+  if (!robot) return <div className="text-center my-5">Robot no encontrado</div>;
 
   return (
-    <div className="container mt-4 robot-detail-page">
-      <h1 className="text-center title">Adopta un Robot con Robot Lovers!</h1>
+    <div className="container my-5">
+      <Link to="/robots" className="btn btn-outline-secondary mb-4">
+        &larr; Volver al listado
+      </Link>
 
-      <div className="banner-container">
-        <img
-          src="https://www.shutterstock.com/image-vector/set-cute-vintage-robots-banner-260nw-746786869.jpg"
-          alt="robots"
-          className="robot-banner"
-        />
-      </div>
-
-      <div className="row mt-4">
-        <div className="col-md-8">
-          {/* Aquí puedes reutilizar la tabla de lista si quieres */}
-          <p className="text-muted">Puedes volver atrás para ver todos los robots.</p>
-        </div>
-
-        <div className="col-md-4">
-          <div className="robot-detail-card">
-            <h4 className="text-center">{robot.nombre}</h4>
-            <img src={robot.imagen} alt={robot.nombre} className="img-fluid robot-img" />
-            <ul className="robot-info">
-              <li><strong>→ Año de Fabricación:</strong> {robot.añoFabricacion}</li>
-              <li><strong>→ Capacidad de Procesamiento:</strong> {robot.capacidadProcesamiento}</li>
-              <li><strong>→ Humor:</strong> {robot.humor}</li>
-              <li>{robot.description}</li>
-            </ul>
+      <div className="card shadow-lg">
+        <div className="row g-0">
+          <div className="col-md-6">
+            <img
+              src={robot.imagen}
+              alt={robot.nombre}
+              className="img-fluid rounded-start card-img-detail"
+            />
+          </div>
+          <div className="col-md-6">
+            <div className="card-body p-4">
+              <h1 className="card-title mb-4">{robot.nombre}</h1>
+              <div className="robot-info">
+                <p><strong>Modelo:</strong> {robot.modelo}</p>
+                <p><strong>Fabricante:</strong> {robot.empresaFabricante}</p>
+                <p><strong>Año de fabricación:</strong> {robot.añoFabricacion}</p>
+                <p><strong>Capacidad de procesamiento:</strong> {robot.capacidadProcesamiento}</p>
+                <p className="mt-4">{robot.humor}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <footer className="footer text-center mt-4">
-        <p>Contact us: +57 3102105253 - info@robot-lovers.com - @robot-lovers</p>
-      </footer>
     </div>
   );
 }
